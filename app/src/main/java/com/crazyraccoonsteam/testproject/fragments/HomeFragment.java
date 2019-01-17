@@ -16,15 +16,10 @@ public class HomeFragment extends Fragment {
 
     private HomeFragmentViewModel mViewModel;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment, container, false);
-        return view;
+        return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
     @Override

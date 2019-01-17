@@ -24,12 +24,7 @@ public class WelcomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.welcome_fragment, container, false);
 
         Button button = view.findViewById(R.id.toHomeFragment);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ((MainActivity)requireActivity()).setFragment(new HomeFragment());
-                }
-            });
+        button.setOnClickListener(view1 -> ((MainActivity) requireActivity()).setFragment(new HomeFragment()));
 
         return view;
     }
