@@ -1,5 +1,7 @@
 package com.crazyraccoonsteam.testproject.fragments;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,8 +25,25 @@ public class WelcomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.welcome_fragment, container, false);
 
-        Button button = view.findViewById(R.id.toHomeFragment);
-        button.setOnClickListener(view1 -> ((MainActivity) requireActivity()).setFragment(new HomeFragment()));
+        WelcomeFragmentViewModel wfvm = new WelcomeFragmentViewModel();
+
+        Button mToHomeFragment = view.findViewById(R.id.toHomeFragment);
+        mToHomeFragment.setOnClickListener(view1 -> {
+
+            /*it's not a very elegant solution. But we will change it later*/
+
+                    wfvm.setNavigateToHomeFragment(true);
+
+                }
+        );
+
+        LiveData<Boolean> liveData = wfvm.getNavigateToHomeFragment();
+
+        liveData.observe(this, value -> {
+            if(value != null && value){
+                ((MainActivity) requireActivity()).setFragment(new HomeFragment());
+            }
+        });
 
         return view;
     }
