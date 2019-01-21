@@ -7,9 +7,8 @@ import java.util.List;
 
 public class HomeFragmentViewModel extends ViewModel {
 
-    private List<String> dummy;
-
     public List<String> getDummy() {
+        List<String> dummy;
         dummy = new ArrayList<>();
         dummy.add(0, "Jimmy");
         dummy.add(1, "Tommy");

@@ -14,19 +14,11 @@ import android.view.ViewGroup;
 import com.crazyraccoonsteam.testproject.adapters.HomeRVAdapter;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 import com.crazyraccoonsteam.testproject.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeFragmentViewModel mViewModel;
-
-    private RecyclerView mHomeRV;
-    private RecyclerView.LayoutManager mHomeRVLayoutManager;
-    private RecyclerView.Adapter mHomeRVAdapter;
-
-    private List<String> mDummy = new ArrayList<>();
 
     View view;
 
@@ -36,14 +28,19 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment, container, false);
 
-        getDummyList();
-
         initRV();
 
         return view;
     }
 
     private void initRV() {
+        mViewModel = new HomeFragmentViewModel();
+        List<String> mDummy = mViewModel.getDummy();
+
+        RecyclerView mHomeRV;
+        RecyclerView.LayoutManager mHomeRVLayoutManager;
+        RecyclerView.Adapter mHomeRVAdapter;
+
         mHomeRV = view.findViewById(R.id.homeRecyclerView);
         mHomeRV.setHasFixedSize(false);
         mHomeRV.setNestedScrollingEnabled(false);
@@ -54,19 +51,10 @@ public class HomeFragment extends Fragment {
 
     }
 
-
-
-    private List<String> getDummyList() {
-        HomeFragmentViewModel homeFragmentViewModel = new HomeFragmentViewModel();
-        mDummy = homeFragmentViewModel.getDummy();
-        return mDummy;
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 

@@ -1,6 +1,5 @@
 package com.crazyraccoonsteam.testproject.adapters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import com.crazyraccoonsteam.testproject.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeRVAdapter extends RecyclerView.Adapter<HomeRVAdapter.HomeRVHolder> {
@@ -47,7 +45,7 @@ public class HomeRVAdapter extends RecyclerView.Adapter<HomeRVAdapter.HomeRVHold
 
         TextView mName;
 
-        public HomeRVHolder(@NonNull View itemView) {
+        private HomeRVHolder(@NonNull View itemView) {
             super(itemView);
 
             mName = itemView.findViewById(R.id.homeRVItemName);
