@@ -14,49 +14,36 @@ import android.view.ViewGroup;
 import com.crazyraccoonsteam.testproject.adapters.HomeRVAdapter;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 import com.crazyraccoonsteam.testproject.R;
+
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeFragmentViewModel mViewModel;
-
-    View view;
-
+    private RecyclerView mHomeRV;
+    private HomeRVAdapter mHomeRVAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.home_fragment, container, false);
-
-        initRV();
-
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+        initRV(view);
         return view;
     }
 
-    private void initRV() {
-        mViewModel = new HomeFragmentViewModel();
-        List<String> mDummy = mViewModel.getDummy();
-
-        RecyclerView mHomeRV;
-        RecyclerView.LayoutManager mHomeRVLayoutManager;
-        RecyclerView.Adapter mHomeRVAdapter;
-
+    private void initRV(View view) {
         mHomeRV = view.findViewById(R.id.homeRecyclerView);
-        mHomeRV.setHasFixedSize(false);
-        mHomeRV.setNestedScrollingEnabled(false);
-        mHomeRVLayoutManager = new LinearLayoutManager(getContext());
-        mHomeRV.setLayoutManager(mHomeRVLayoutManager);
-        mHomeRVAdapter = new HomeRVAdapter(mDummy);
-        mHomeRV.setAdapter(mHomeRVAdapter);
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
-    }
+        mHomeRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        mHomeRVAdapter = new HomeRVAdapter(mViewModel.getDummy());
+        mHomeRV.setAdapter(mHomeRVAdapter);
 
+    }
 
 
 }

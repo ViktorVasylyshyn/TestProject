@@ -22,13 +22,7 @@ public class HomeRVAdapter extends RecyclerView.Adapter<HomeRVAdapter.HomeRVHold
     @NonNull
     @Override
     public HomeRVHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_rv_item, null, false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(lp);
-
-        HomeRVHolder homeRVHolder;
-        homeRVHolder = new HomeRVHolder(view);
-        return homeRVHolder;
+        return new HomeRVHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_rv_item, null, false));
     }
 
     @Override

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Test Project</string>
+
+
+    <string name="hello">Hello</string>
+    <string name="to_home_fragment">To Home Fragment</string>
+    <string name="you_are_at_home">You are at home Fragment boys!</string>
 </resources>
