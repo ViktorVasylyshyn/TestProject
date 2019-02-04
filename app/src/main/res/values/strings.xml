@@ -5,4 +5,8 @@
     <string name="hello">Hello</string>
     <string name="to_home_fragment">To Home Fragment</string>
     <string name="you_are_at_home">You are at home Fragment boys!</string>
+
+    <string name="name_1">Jimmy</string>
+    <string name="name_2">Bobby</string>
+    <string name="name_3">Tommy</string>
 </resources>

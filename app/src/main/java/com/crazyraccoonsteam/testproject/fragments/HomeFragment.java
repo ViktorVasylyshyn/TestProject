@@ -11,17 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.crazyraccoonsteam.testproject.adapters.HomeRVAdapter;
+import com.crazyraccoonsteam.testproject.adapters.PersonAdapter;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 import com.crazyraccoonsteam.testproject.R;
-
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeFragmentViewModel mViewModel;
-    private RecyclerView mHomeRV;
-    private HomeRVAdapter mHomeRVAdapter;
+    private RecyclerView mPersonsRecyclerView;
+    private PersonAdapter mPersondAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -32,16 +30,16 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRV(View view) {
-        mHomeRV = view.findViewById(R.id.homeRecyclerView);
+        mPersonsRecyclerView = view.findViewById(R.id.personsRecyclerView);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
-        mHomeRV.setLayoutManager(new LinearLayoutManager(getContext()));
-        mHomeRVAdapter = new HomeRVAdapter(mViewModel.getDummy());
-        mHomeRV.setAdapter(mHomeRVAdapter);
+        mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPersondAdapter = new PersonAdapter(mViewModel.getPersons());
+        mPersonsRecyclerView.setAdapter(mPersondAdapter);
 
     }
 

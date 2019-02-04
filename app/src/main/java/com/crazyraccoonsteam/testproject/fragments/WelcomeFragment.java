@@ -1,6 +1,8 @@
 package com.crazyraccoonsteam.testproject.fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,11 +22,10 @@ public class WelcomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.welcome_fragment, container, false);
+        ViewDataBinding mViewDataBinding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false);
+        mViewDataBinding.setLifecycleOwner(this);
 
-        view.findViewById(R.id.toHomeFragment).setOnClickListener(view1 -> mViewModel.performNavigateToHomeFragment());
-        /*it's not a very elegant solution. But we will change it later*/
-        return view;
+        return inflater.inflate(R.layout.welcome_fragment, container, false);
     }
 
     @Override
