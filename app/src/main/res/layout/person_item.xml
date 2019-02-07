@@ -4,7 +4,7 @@
     <data>
         <variable
             name="person"
-            type="com.crazyraccoonsteam.testproject.adapters.Person" />
+            type="com.crazyraccoonsteam.testproject.pojo.Person" />
     </data>
 
     <LinearLayout
