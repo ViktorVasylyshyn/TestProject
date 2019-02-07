@@ -6,46 +6,48 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.crazyraccoonsteam.testproject.R;
 import com.crazyraccoonsteam.testproject.databinding.PersonItemBinding;
 
 import java.util.List;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
 
+public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder>{
     private List<Person> dummy;
-    private LayoutInflater layoutInflater;
 
-    public PersonAdapter(List<Person> dummy){
+    public PersonAdapter (List<Person> dummy){
         this.dummy = dummy;
     }
 
+
     @NonNull
     @Override
-    public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        if(layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        }
-        PersonItemBinding binding = PersonItemBinding.inflate(layoutInflater, viewGroup, false);
+    public PersonAdapter.PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        PersonItemBinding binding = PersonItemBinding.inflate(inflater, viewGroup, false);
         return new PersonViewHolder(binding.getRoot());
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PersonViewHolder personHolder, int position) {
-        personHolder.binding.setPerson(dummy.get(position));
+    public void onBindViewHolder(@NonNull PersonAdapter.PersonViewHolder personViewHolder, int i) {
+        personViewHolder.binding.setPerson(dummy.get(i));
+
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return dummy.size();
     }
 
-    class PersonViewHolder extends RecyclerView.ViewHolder{
 
-        private PersonItemBinding binding;
 
-        private PersonViewHolder(View view) {
+    public static class PersonViewHolder extends RecyclerView.ViewHolder{
+
+        PersonItemBinding binding;
+
+        public PersonViewHolder(View view){
             super(view);
             binding = DataBindingUtil.bind(view);
         }

@@ -19,7 +19,7 @@ public class HomeFragment extends Fragment {
 
     private HomeFragmentViewModel mViewModel;
     private RecyclerView mPersonsRecyclerView;
-    private PersonAdapter mPersondAdapter;
+    private PersonAdapter mPersonAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,8 +38,8 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
         mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mPersondAdapter = new PersonAdapter(mViewModel.getPersons());
-        mPersonsRecyclerView.setAdapter(mPersondAdapter);
+        mPersonAdapter = new PersonAdapter(mViewModel.getPersons());
+        mPersonsRecyclerView.setAdapter(mPersonAdapter);
 
     }
 

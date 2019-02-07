@@ -20,8 +20,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:fontFamily="monospace"
-            android:text="@{person.name}"
-            android:textSize="32sp" />
+            android:text="@{person.name}" />
+
+        <TextView
+            android:id="@+id/personAge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="monospace"
+            android:text="@{person.age}" />
 
     </LinearLayout>
 </layout>
