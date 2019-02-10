@@ -1,10 +1,8 @@
 package com.crazyraccoonsteam.testproject.adapters;
 
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.crazyraccoonsteam.testproject.databinding.PersonItemBinding;
@@ -13,25 +11,23 @@ import com.crazyraccoonsteam.testproject.pojo.Person;
 import java.util.List;
 
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder>{
+public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
     private List<Person> dummy;
 
-    public PersonAdapter (List<Person> dummy){
+    public void setData(List<Person> dummy) {
         this.dummy = dummy;
     }
-
 
     @NonNull
     @Override
     public PersonAdapter.PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        PersonItemBinding binding = PersonItemBinding.inflate(inflater, viewGroup, false);
-        return new PersonViewHolder(binding.getRoot());
+        PersonItemBinding binding = PersonItemBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
+        return new PersonViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PersonAdapter.PersonViewHolder personViewHolder, int i) {
-        personViewHolder.binding.setPerson(dummy.get(i));
+        personViewHolder.bindData(dummy.get(i));
 
     }
 
@@ -41,14 +37,19 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     }
 
 
+    public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
-    public static class PersonViewHolder extends RecyclerView.ViewHolder{
+        private PersonItemBinding binding;
 
-        PersonItemBinding binding;
-
-        public PersonViewHolder(View view){
-            super(view);
-            binding = DataBindingUtil.bind(view);
+        public PersonViewHolder(PersonItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
+
+        void bindData(final Person person) {
+
+            binding.setPerson(person);
+        }
+
     }
 }

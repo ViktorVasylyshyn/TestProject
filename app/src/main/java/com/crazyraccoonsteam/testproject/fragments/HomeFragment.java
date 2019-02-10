@@ -31,15 +31,16 @@ public class HomeFragment extends Fragment {
 
     private void initRV(View view) {
         mPersonsRecyclerView = view.findViewById(R.id.personsRecyclerView);
+        mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPersonAdapter = new PersonAdapter();
+        mPersonsRecyclerView.setAdapter(mPersonAdapter);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
-        mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mPersonAdapter = new PersonAdapter(mViewModel.getPersons());
-        mPersonsRecyclerView.setAdapter(mPersonAdapter);
+        mPersonAdapter.setData(mViewModel.getPersons());
 
     }
 
