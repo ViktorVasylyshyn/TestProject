@@ -1,0 +1,19 @@
+
+
+Oapp/src/main/java/com/crazyraccoonsteam/testproject/component/AppComponent.java,9\4\94e085073f07e1390688b5967bb1212ec97147f8
+l
+<app/src/main/java/com/crazyraccoonsteam/testproject/App.java,f\6\f68fde27d5d162e7448ca968ff5f361563f7c325
+
+Oapp/src/main/java/com/crazyraccoonsteam/testproject/adapters/PersonAdapter.java,9\c\9c44fbdda60117aa611cf61af64a6c9dac5e4770
+
+Oapp/src/main/java/com/crazyraccoonsteam/testproject/fragments/HomeFragment.java,7\f\7f2ab987b984e8d994a5264ef9105ba8c6853aa7
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+u
+Eapp/src/main/java/com/crazyraccoonsteam/testproject/MainActivity.java,c\a\ca379f6a1866153f3b613bf6df0cdffb7220b3b9
+‚
+Rapp/src/main/java/com/crazyraccoonsteam/testproject/fragments/WelcomeFragment.java,f\2\f2ccc5207eb9d835f3bfb88ffe38c04aa46139c5
+Œ
+\app/src/main/java/com/crazyraccoonsteam/testproject/viewmodels/WelcomeFragmentViewModel.java,c\2\c2cd3c78482ec24c4c97aff99afb3c065e1c4cdc
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e

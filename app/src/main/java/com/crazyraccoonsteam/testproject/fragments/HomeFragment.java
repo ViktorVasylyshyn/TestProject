@@ -15,11 +15,16 @@ import com.crazyraccoonsteam.testproject.adapters.PersonAdapter;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 import com.crazyraccoonsteam.testproject.R;
 
+import javax.inject.Inject;
+
 public class HomeFragment extends Fragment {
+
+    @Inject
+    PersonAdapter mPersonAdapter;
 
     private HomeFragmentViewModel mViewModel;
     private RecyclerView mPersonsRecyclerView;
-    private PersonAdapter mPersonAdapter;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -32,7 +37,6 @@ public class HomeFragment extends Fragment {
     private void initRV(View view) {
         mPersonsRecyclerView = view.findViewById(R.id.personsRecyclerView);
         mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mPersonAdapter = new PersonAdapter();
         mPersonsRecyclerView.setAdapter(mPersonAdapter);
     }
 

@@ -10,9 +10,15 @@ import com.crazyraccoonsteam.testproject.pojo.Person;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
     private List<Person> dummy;
+
+    @Inject
+    PersonAdapter(){
+    }
 
     public void setData(List<Person> dummy) {
         this.dummy = dummy;
