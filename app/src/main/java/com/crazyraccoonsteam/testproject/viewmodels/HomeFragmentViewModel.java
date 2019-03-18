@@ -1,18 +1,58 @@
 package com.crazyraccoonsteam.testproject.viewmodels;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
-import com.crazyraccoonsteam.testproject.pojo.Person;
+import com.crazyraccoonsteam.testproject.data.RestClient;
+import com.crazyraccoonsteam.testproject.pojo.PictureOfTheDay;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class HomeFragmentViewModel extends ViewModel {
 
-    public List<Person> getPersons() {
-        return Arrays.asList(new Person("Jimmy", "18"),
-                new Person("Bobby", "19"),
-                new Person("Tommy", "20"),
-                new Person("Валэра", "38"));
+    private MutableLiveData<List<PictureOfTheDay>> pictureOfTheDayMutableLiveData = new MutableLiveData<>();
+
+    private List<PictureOfTheDay> pictureOfTheDaysList = new ArrayList<>();
+
+
+    public LiveData<List<PictureOfTheDay>> gerPictureOfTheDay() {
+        return pictureOfTheDayMutableLiveData;
+    }
+
+
+    public void fetchAstronomyPictureOfTheDay() {
+        RestClient.getInstance()
+                .getAPODApi()
+                .getPictureOfTheDay()
+                .enqueue(new Callback<PictureOfTheDay>() {
+                    @Override
+                    public void onResponse(@NonNull Call<PictureOfTheDay> call, @NonNull Response<PictureOfTheDay> response) {
+                        if (response.isSuccessful()) {
+                            PictureOfTheDay pictureOfTheDay = response.body();
+
+                            if (null != pictureOfTheDay) {
+                                pictureOfTheDaysList.add(pictureOfTheDay);
+                                pictureOfTheDayMutableLiveData.setValue(pictureOfTheDaysList);
+                            } else {
+                                Log.e("INFO", "pictureOfTheDay equals to null");
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<PictureOfTheDay> call, Throwable t) {
+                        System.out.println("Error occurred while getting request!");
+                    }
+                });
     }
 }
