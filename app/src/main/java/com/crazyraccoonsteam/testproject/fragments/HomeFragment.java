@@ -11,19 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.crazyraccoonsteam.testproject.adapters.PersonAdapter;
+import com.crazyraccoonsteam.testproject.adapters.PODAdapter;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 import com.crazyraccoonsteam.testproject.R;
 
-import javax.inject.Inject;
-
 public class HomeFragment extends Fragment {
 
-    @Inject
-    PersonAdapter mPersonAdapter;
+//    @Inject
+    PODAdapter mPODAdapter = new PODAdapter() ;
 
     private HomeFragmentViewModel mViewModel;
-    private RecyclerView mPersonsRecyclerView;
+    private RecyclerView mRecyclerView;
 
 
     @Override
@@ -35,16 +33,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRV(View view) {
-        mPersonsRecyclerView = view.findViewById(R.id.personsRecyclerView);
-        mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mPersonsRecyclerView.setAdapter(mPersonAdapter);
+        mRecyclerView = view.findViewById(R.id.personsRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mPODAdapter);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeFragmentViewModel.class);
-        mPersonAdapter.setData(mViewModel.getPersons());
+        mViewModel.gerPictureOfTheDay().observe(getViewLifecycleOwner(), pictureOfTheDay -> {
+            if (pictureOfTheDay != null) {
+                mPODAdapter.setData(pictureOfTheDay);
+                mPODAdapter.notifyDataSetChanged();
+            }
+        });
+        mViewModel.fetchAstronomyPictureOfTheDay();
 
     }
 

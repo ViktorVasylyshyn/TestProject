@@ -1,5 +1,6 @@
 package com.crazyraccoonsteam.testproject.viewmodels;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -11,7 +12,7 @@ public class WelcomeFragmentViewModel extends ViewModel {
         navigateToHomeFragment.setValue(true);
     }
 
-    public MutableLiveData<Boolean> getNavigateToHomeFragmentLiveData() {
+    public LiveData<Boolean> getNavigateToHomeFragmentLiveData() {
         return navigateToHomeFragment;
     }
 }
