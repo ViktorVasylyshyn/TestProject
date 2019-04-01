@@ -1,4 +1,4 @@
-package com.crazyraccoonsteam.testproject.pojo;
+package com.crazyraccoonsteam.testproject.data.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

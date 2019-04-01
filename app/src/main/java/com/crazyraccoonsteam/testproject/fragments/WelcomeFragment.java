@@ -16,8 +16,6 @@ import com.crazyraccoonsteam.testproject.databinding.WelcomeFragmentBinding;
 import com.crazyraccoonsteam.testproject.viewmodels.WelcomeFragmentViewModel;
 
 public class WelcomeFragment extends Fragment {
-
-    private WelcomeFragmentViewModel mViewModel;
     private WelcomeFragmentBinding mViewDataBinding;
 
     @Override
@@ -25,18 +23,18 @@ public class WelcomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mViewDataBinding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false);
         mViewDataBinding.setLifecycleOwner(this);
-
         return mViewDataBinding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(WelcomeFragmentViewModel.class);
+        WelcomeFragmentViewModel mViewModel = ViewModelProviders.of(this).get(WelcomeFragmentViewModel.class);
         mViewDataBinding.setWelcomeFragmentViewModel(mViewModel);
         mViewModel.getNavigateToHomeFragmentLiveData().observe(this, value -> {
             if (value != null && value) {
-                ((MainActivity) requireActivity()).setFragment(new HomeFragment());
+                mViewModel.resetNavigationValue();
+                ((MainActivity) requireActivity()).setFragment(R.id.homeFragment);
             }
         });
     }

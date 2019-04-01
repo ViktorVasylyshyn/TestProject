@@ -12,6 +12,10 @@ public class WelcomeFragmentViewModel extends ViewModel {
         navigateToHomeFragment.setValue(true);
     }
 
+    public void resetNavigationValue() {
+        navigateToHomeFragment.setValue(false);
+    }
+
     public LiveData<Boolean> getNavigateToHomeFragmentLiveData() {
         return navigateToHomeFragment;
     }
