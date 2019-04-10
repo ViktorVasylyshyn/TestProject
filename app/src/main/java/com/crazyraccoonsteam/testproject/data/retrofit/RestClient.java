@@ -1,7 +1,11 @@
-package com.crazyraccoonsteam.testproject.data;
+package com.crazyraccoonsteam.testproject.data.retrofit;
 
+import javax.inject.Inject;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class RestClient {
 
@@ -9,22 +13,15 @@ public class RestClient {
 
     private AstronomyPictureOfTheDayApi astronomyPictureOfTheDayApi;
 
-    private static RestClient mInstance;
-
-    public static RestClient getInstance() {
-        if (mInstance == null) {
-            mInstance = new RestClient();
-        }
-        return mInstance;
-    }
-
-    RestClient() {
+    @Inject
+    public RestClient() {
         build();
     }
 
     private void build() {
         Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl(API_LINK)
+                .client(instantiateClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         astronomyPictureOfTheDayApi = mRetrofit.create(AstronomyPictureOfTheDayApi.class);
@@ -32,6 +29,12 @@ public class RestClient {
 
     public AstronomyPictureOfTheDayApi getAPODApi() {
         return astronomyPictureOfTheDayApi;
+    }
+
+    private OkHttpClient instantiateClient() {
+        OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
+        okHttpClientBuilder.addInterceptor(new ApiKeyInterceptor());
+        return okHttpClientBuilder.build();
     }
 
 

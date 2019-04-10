@@ -1,11 +1,10 @@
 package com.crazyraccoonsteam.testproject;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.crazyraccoonsteam.testproject.fragments.WelcomeFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,17 +14,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            setFragment(new WelcomeFragment());
-        }else{
-            onRestoreInstanceState(savedInstanceState);
+            setFragment(R.id.welcomeFragment);
         }
     }
 
-    public void setFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+    public void setFragment(int fragmentId) {
+        NavController navController = Navigation.findNavController(this, R.id.navigation_container);
+        navController.navigate(fragmentId);
     }
 }
 
