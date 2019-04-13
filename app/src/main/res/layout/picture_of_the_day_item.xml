@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/button_background"
+        android:layout_margin="@dimen/margins">
 
         <TextView
             android:id="@+id/pictureTitle"
@@ -31,6 +33,11 @@
             android:fontFamily="monospace"
             android:text="@{picture.date}" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@{picture.hdurl}"/>
+
         <TextView
             android:id="@+id/pictureExplanation"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -39,25 +46,6 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="monospace"
             android:text="@{picture.explanation}" />
-
-        <TextView
-            android:id="@+id/pictureHdurl"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textStyle="bold"
-            android:fontFamily="monospace"
-            android:text="@{picture.hdurl}" />
-
-        <TextView
-            android:id="@+id/pictureMediaType"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="monospace"
-            android:text="@{picture.mediaType}" />
 
         <TextView
             android:id="@+id/pictureServiceVersion"
