@@ -10,7 +10,7 @@ import dagger.Provides;
 public class ViewModelProviderModule {
 
     @Provides
-    HomeFragmentViewModel.HomeFragmentViewModelFactory provideHome(RestClient restClient){
+    HomeFragmentViewModel.HomeFragmentViewModelFactory provideViewModel(RestClient restClient){
         return new HomeFragmentViewModel.HomeFragmentViewModelFactory(restClient);
     }
 }

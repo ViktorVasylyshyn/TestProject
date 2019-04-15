@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,30 +11,31 @@
             type="com.crazyraccoonsteam.testproject.viewmodels.WelcomeFragmentViewModel"/>
     </data>
 
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.WelcomeFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/galaxy">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        android:id="@+id/hello"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        />
+        android:layout_height="match_parent"
+        android:src="@drawable/rocket"/>
 
     <Button
         android:id="@+id/toHomeFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:background="@drawable/button_background"
+        android:layout_margin="@dimen/margins"
         android:gravity="center"
+        android:onClick="@{(view) -> welcomeFragmentViewModel.performNavigateToHomeFragment()}"
         android:text="@string/to_home_fragment"
-        android:onClick="@{(view) -> welcomeFragmentViewModel.performNavigateToHomeFragment()}"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 </layout>
