@@ -1,6 +1,6 @@
 package com.crazyraccoonsteam.testproject.dagger.modules;
 
-import com.crazyraccoonsteam.testproject.data.retrofit.RestClient;
+import com.crazyraccoonsteam.testproject.domain.FetchAstronomyPictureOfTheDayUseCase;
 import com.crazyraccoonsteam.testproject.viewmodels.HomeFragmentViewModel;
 
 import dagger.Module;
@@ -10,7 +10,7 @@ import dagger.Provides;
 public class ViewModelProviderModule {
 
     @Provides
-    HomeFragmentViewModel.HomeFragmentViewModelFactory provideViewModel(RestClient restClient){
-        return new HomeFragmentViewModel.HomeFragmentViewModelFactory(restClient);
+    HomeFragmentViewModel.HomeFragmentViewModelFactory provideHomeViewModel(FetchAstronomyPictureOfTheDayUseCase useCase) {
+        return new HomeFragmentViewModel.HomeFragmentViewModelFactory(useCase);
     }
 }
