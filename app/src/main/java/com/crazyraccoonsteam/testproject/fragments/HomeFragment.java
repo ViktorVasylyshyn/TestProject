@@ -2,7 +2,6 @@ package com.crazyraccoonsteam.testproject.fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableBoolean;
 import android.os.Bundle;
@@ -14,9 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.crazyraccoonsteam.testproject.App;
 import com.crazyraccoonsteam.testproject.R;
 import com.crazyraccoonsteam.testproject.adapters.PODAdapter;
@@ -76,15 +73,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchAstronomyPictureOfTheDay() {
-        mViewModel.fetchAstronomyPictureOfTheDay();
+        mViewModel.gerPictureOfTheDay();
         mShowProgress.set(true);
-    }
-
-    @BindingAdapter("android:src")
-    public static void loadImage(ImageView view, String url) {
-        if (url != null) {
-            Glide.with(view.getContext()).load(url)
-                    .into(view);
-        }
     }
 }
